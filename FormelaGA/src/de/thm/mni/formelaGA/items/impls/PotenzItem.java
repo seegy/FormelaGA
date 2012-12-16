@@ -126,4 +126,12 @@ public class PotenzItem implements TwoCompItem {
 		return exponent;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		PotenzItem result = new PotenzItem(base.getClone(), exponent.getClone());
+		result.depth = depth;
+		return result;
+	}
+
 }

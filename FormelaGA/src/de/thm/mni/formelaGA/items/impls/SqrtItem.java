@@ -104,4 +104,12 @@ public class SqrtItem implements OneCompItem {
 		return value;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		SqrtItem result = new SqrtItem(value.getClone());
+		result.depth = depth; 
+		return result;
+	}
+
 }

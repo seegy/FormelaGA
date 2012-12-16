@@ -194,4 +194,14 @@ public class StandartItem implements TwoCompItem {
 		return b;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		StandartItem result = new StandartItem(a.getClone(), b.getClone());
+		result.type = type;
+		result.depth = depth;
+		return result;
+	}
+
+	
 }

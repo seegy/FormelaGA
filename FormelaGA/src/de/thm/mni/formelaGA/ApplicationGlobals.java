@@ -14,7 +14,7 @@ import de.thm.mni.formelaGA.items.impls.StandartItem;
 
 public final class ApplicationGlobals {
 
-	public static String NAME = "PenisMaster 1337";
+	public static String NAME = "GaussGenom";
 	
 
 	/**
@@ -39,7 +39,7 @@ public final class ApplicationGlobals {
 	
 	public static double X_STEPS = 1.0;
 	
-	public static double[] SOLUTIONS= {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	public static double[] SOLUTIONS= {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
 	
 	

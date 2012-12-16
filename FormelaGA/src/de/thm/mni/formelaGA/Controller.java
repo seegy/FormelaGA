@@ -13,7 +13,7 @@ import de.thm.mni.formelaGA.items.impls.StandartItem;
 
 public class Controller {
 
-	private static List<FormelPattern> genom;
+	private static List<Gen> genom;
 	
 	
 	/**
@@ -30,45 +30,52 @@ public class Controller {
 	private static void initialisierung(){
 		
 		ApplicationGlobals.X = new XVariable();
-		genom = new ArrayList<FormelPattern>();
+		genom = new ArrayList<Gen>();
 		
 		for(int i = 0; i < ApplicationGlobals.GEN_COUNT; i++){
-			genom.add(ApplicationGlobals.randomMiddleItem(ApplicationGlobals.X));
+			genom.add(new Gen(ApplicationGlobals.randomMiddleItem(ApplicationGlobals.X)));
 		}
 		
 	}
 	
 	private static void run(){
 		
+		double bestFit;
+		
 		for(long i = 1; i <= ApplicationGlobals.MAX_GENERATION; i++){
 			mutation();
 			
-			if(test() >= 1.0) break;
+			bestFit = test();
+			if(bestFit == 0.0) break;
 			
 			recombination();
 			
-			if(test()>= 1.0) break;
+			bestFit = test();
+			if(bestFit>= 0.0) break;
 			
 			replication();
 			
-			if(test()>= 1.0) break;
-			System.out.println("Beste Fitness: "+getFitness(genom.get(0)) );
+			bestFit = test();
+			if(bestFit>= 0.0) break;
+			System.out.println("Beste Fitness: "+bestFit);
 		}
 		
-		System.out.println("f(x) = "+genom.get(0).getWriteAble());
+		System.out.println("f(x) = "+genom.get(0).getFormelPattern().getWriteAble());
 	}
 	
 	private static double test() {
-
+		
+		setFitnesses();
+		
 		sort(0, genom.size()-1);
 		
-		return getFitness(genom.get(0));
+		return genom.get(0).getFitness();
 	}
 
 
 	private static void sort(int li, int re) {
         int i, j;
-        FormelPattern x;
+        Gen x;
         while (re > li)
         {
             i = li;
@@ -76,9 +83,9 @@ public class Controller {
             x = genom.get(li);
             while(i < j)
             {
-                while(getFitness(genom.get(j))<getFitness(x))j--;
+                while(genom.get(j).getFitness()<x.getFitness())j--;
                 genom.set(i, genom.get(j));
-                while ((i<j) && !(getFitness(genom.get(i))<getFitness(x)))i++;
+                while ((i<j) && !(genom.get(i).getFitness()<x.getFitness()))i++;
                 genom.set(j, genom.get(i));
             }
             genom.set(i, x);
@@ -92,29 +99,40 @@ public class Controller {
 	private static void mutation(){
 		
 		for(int i = 0; i < ApplicationGlobals.GEN_COUNT; i++){
-			genom.get(i).mutate();
+			genom.get(i).getFormelPattern().mutate();
 		}
 	}
 	
 	private static void replication(){
-		// TODO
+		List<Gen> temp = new ArrayList<>();
+		
+		//genom = temp;
 	}
 	
 	private static void recombination(){
 		// TODO
 	}
 
-	private static double getFitness(FormelItem fi){
-		double result = 1.0;
-		double j = 0;
-		
-		for(int i = 0; j < ApplicationGlobals.SOLUTIONS.length; j+=ApplicationGlobals.X_STEPS, i++){
-
-			ApplicationGlobals.X.setXValue(j);
-			result -= (Math.pow(fi.getUseCase()-ApplicationGlobals.SOLUTIONS[i], 2))/Math.pow(ApplicationGlobals.SOLUTIONS[i], 2);
+	private static void setFitnesses(){
+		for(Gen gen : genom){
 			
+			double result = 0.;
+			double j = 0;
+			
+			for(int i = 0; j < ApplicationGlobals.SOLUTIONS.length; j+=ApplicationGlobals.X_STEPS, i++){
+	
+				ApplicationGlobals.X.setXValue(j);
+				double uc = gen.getFormelPattern().getUseCase();
+				double diff = Math.pow(uc - ApplicationGlobals.SOLUTIONS[i], 2);
+				result -= (Math.pow(gen.getFormelPattern().getUseCase()-
+						ApplicationGlobals.SOLUTIONS[i], 2));
+				
+			}
+			if(Double.isNaN(result)){
+				result = Double.NEGATIVE_INFINITY;
+			}
+			gen.setFitness(result);
 		}
 		
-		return result;
 	}
 }

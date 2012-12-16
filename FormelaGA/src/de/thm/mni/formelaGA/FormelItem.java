@@ -7,5 +7,7 @@ public interface FormelItem {
 	
 	public int getDepth();
 	
+	public FormelItem getClone();
+	
 	
 }

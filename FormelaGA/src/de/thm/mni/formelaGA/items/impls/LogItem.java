@@ -109,4 +109,12 @@ public class LogItem implements TwoCompItem {
 		return base;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		LogItem result = new LogItem(base.getClone(), x.getClone());
+		result.depth = depth;
+		return result;
+	}
+
 }

@@ -24,6 +24,11 @@ public class XVariable implements FormelItem {
 	public int getDepth() {
 		return 0;
 	}
+
+	@Override
+	public FormelItem getClone() {
+		return this;
+	}
 	
 
 }

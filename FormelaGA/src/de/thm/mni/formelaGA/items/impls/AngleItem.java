@@ -202,4 +202,13 @@ public class AngleItem implements OneCompItem {
 		return value;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		AngleItem result = new AngleItem(value.getClone());
+		result.type = type;
+		result.depth = depth;
+		return result;
+	}
+
 }

@@ -57,6 +57,12 @@ public class Constant implements FormelPattern{
 		return 1;
 	}
 
+
+	@Override
+	public FormelItem getClone() {
+		return new Constant(value);
+	}
+
 	
 
 }
