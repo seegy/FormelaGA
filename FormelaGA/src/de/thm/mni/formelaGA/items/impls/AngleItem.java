@@ -1,12 +1,15 @@
 /**
  * 
  */
-package de.thm.mni.formelaGA.items;
+package de.thm.mni.formelaGA.items.impls;
 
 import java.util.Random;
 
 import de.thm.mni.formelaGA.ApplicationGlobals;
 import de.thm.mni.formelaGA.FormelItem;
+import de.thm.mni.formelaGA.items.FormelPattern;
+import de.thm.mni.formelaGA.items.OneCompItem;
+import de.thm.mni.formelaGA.items.impls.stuff.AngleType;
 
 /**
  * @author SeeGy
@@ -127,18 +130,31 @@ public class AngleItem implements OneCompItem {
 	public FormelItem mutate() {
 		FormelItem isNull = null;
 		
+		
+		/**
+		 *  Wenn der Inhalt keine Variable ist, Mutation weiter geben
+		 */
 		if( value.getDepth()>0){
 			isNull = ((FormelPattern)value).mutate();
 		}
 		
+		/** 
+		 * wenn die Mutation des Inhaltes nicht Null zurückgickt, 
+		 * wird es verändert durch durch die static-Methode
+		*/
 		if(isNull != null){
 			value = ApplicationGlobals.randomMiddleItem(isNull);
 		}
 		
+		/**
+		 * Eigene Mutation, entscheidet auch zwischen innere und aeussere Mutation
+		 */
 		if(new Random().nextDouble() <= ApplicationGlobals.PM){
 			if(new Random().nextDouble() <= ApplicationGlobals.CHANGE_PM){
+				//aeussere Mutation
 				return this;
 			} else {
+				//innere Mutation
 				selfmutate();
 			}
 		}

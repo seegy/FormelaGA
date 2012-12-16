@@ -1,11 +1,15 @@
 /**
  * 
  */
-package de.thm.mni.formelaGA.items;
+package de.thm.mni.formelaGA.items.impls;
 
 import java.util.Random;
 
+import de.thm.mni.formelaGA.ApplicationGlobals;
 import de.thm.mni.formelaGA.FormelItem;
+import de.thm.mni.formelaGA.items.FormelPattern;
+import de.thm.mni.formelaGA.items.TwoCompItem;
+import de.thm.mni.formelaGA.items.impls.stuff.StandartType;
 
 /**
  * @author SeeGy
@@ -117,8 +121,59 @@ public class StandartItem implements TwoCompItem {
 	 */
 	@Override
 	public FormelItem mutate() {
-		// TODO Auto-generated method stub
+		FormelItem isNull = null;
+		
+		
+		/**
+		 *  Wenn a keine Variable ist, Mutation weiter geben
+		 */
+		if( a.getDepth()>0){
+			isNull = ((FormelPattern)a).mutate();
+		}
+		
+		/** 
+		 * wenn die Mutation von a nicht Null zurückgickt, 
+		 * wird es verändert durch durch die static-Methode
+		*/
+		if(isNull != null){
+			a = ApplicationGlobals.randomMiddleItem(isNull);
+		}
+		
+		/**
+		 *  Wenn b keine Variable ist, Mutation weiter geben
+		 */
+		if( b.getDepth()>0){
+			isNull = ((FormelPattern)b).mutate();
+		}
+		
+		/** 
+		 * wenn die Mutation von b nicht Null zurückgickt, 
+		 * wird es verändert durch durch die static-Methode
+		*/
+		if(isNull != null){
+			b = ApplicationGlobals.randomMiddleItem(isNull);
+		}
+		
+		/**
+		 * Eigene Mutation, entscheidet auch zwischen innere und aeussere Mutation
+		 */
+		if(new Random().nextDouble() <= ApplicationGlobals.PM){
+			if(new Random().nextDouble() <= ApplicationGlobals.CHANGE_PM){
+				//aeussere Mutation
+				return this;
+			} else {
+				//innere Mutation
+				selfmutate();
+			}
+		}
+		
 		return null;
+	}
+
+
+	private void selfmutate() {
+		// TODO Auto-generated method stub
+		
 	}
 
 

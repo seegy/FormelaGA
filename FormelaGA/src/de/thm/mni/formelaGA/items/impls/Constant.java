@@ -1,9 +1,10 @@
-package de.thm.mni.formelaGA.items;
+package de.thm.mni.formelaGA.items.impls;
 
 import java.util.Random;
 
 import de.thm.mni.formelaGA.ApplicationGlobals;
 import de.thm.mni.formelaGA.FormelItem;
+import de.thm.mni.formelaGA.items.FormelPattern;
 
 
 public class Constant implements FormelPattern{

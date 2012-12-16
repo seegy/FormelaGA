@@ -1,4 +1,4 @@
-package de.thm.mni.formelaGA.items;
+package de.thm.mni.formelaGA.items.impls.stuff;
 
 public enum StandartType {
 	
