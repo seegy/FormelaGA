@@ -46,6 +46,8 @@ public final class ApplicationGlobals {
 	
 	//########### Tools ###############
 	
+	public static final Random randomer = new Random();
+	
 	public static FormelPattern randomMiddleItem(FormelItem fi){
 		FormelPattern result = null;
 		FormelItem[] args = { null, null };
@@ -63,9 +65,9 @@ public final class ApplicationGlobals {
 			args[1] = randomEndItem();
 		}
 		
-		int i = new Random().nextInt(2);
+		int i = ApplicationGlobals.randomer.nextInt(2);
 		
-		switch(new Random().nextInt(5)){
+		switch(ApplicationGlobals.randomer.nextInt(5)){
 		
 		case 0:
 			result = new AngleItem(args[0]);
@@ -93,7 +95,7 @@ public final class ApplicationGlobals {
 		
 		FormelItem result = null;
 		
-		if(new Random().nextDouble() <= CONST_PM){
+		if(ApplicationGlobals.randomer.nextDouble() <= CONST_PM){
 			result = new Constant(1);
 			
 		} else {

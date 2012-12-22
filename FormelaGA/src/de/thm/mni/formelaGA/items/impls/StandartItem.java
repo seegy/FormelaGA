@@ -32,7 +32,7 @@ public class StandartItem implements TwoCompItem {
 		
 		depth = (a.getDepth() > b.getDepth()?a.getDepth():b.getDepth())+1;
 		
-		Random r =  new Random();
+		Random r =  ApplicationGlobals.randomer;
 		
 		switch(r.nextInt(5)){
 		
@@ -157,8 +157,8 @@ public class StandartItem implements TwoCompItem {
 		/**
 		 * Eigene Mutation, entscheidet auch zwischen innere und aeussere Mutation
 		 */
-		if(new Random().nextDouble() <= ApplicationGlobals.PM){
-			if(new Random().nextDouble() <= ApplicationGlobals.CHANGE_PM){
+		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
+			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
 				return this;
 			} else {

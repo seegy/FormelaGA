@@ -89,8 +89,8 @@ public class PotenzItem implements TwoCompItem {
 		/**
 		 * Eigene Mutation, entscheidet auch zwischen innere und aeussere Mutation
 		 */
-		if(new Random().nextDouble() <= ApplicationGlobals.PM){
-			if(new Random().nextDouble() <= ApplicationGlobals.CHANGE_PM){
+		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
+			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
 				return this;
 			} else {

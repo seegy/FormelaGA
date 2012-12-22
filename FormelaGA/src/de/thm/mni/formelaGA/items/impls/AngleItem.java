@@ -26,7 +26,7 @@ public class AngleItem implements OneCompItem {
 		this.value = value;
 		this.depth = value.getDepth()+1;
 		
-		Random r = new Random();
+		Random r = ApplicationGlobals.randomer;
 		
 		switch(r.nextInt(6)){
 		case 0:
@@ -139,18 +139,29 @@ public class AngleItem implements OneCompItem {
 		}
 		
 		/** 
+		 * Aessere Mutation des inneren Items
 		 * wenn die Mutation des Inhaltes nicht Null zurückgickt, 
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			value = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(3)){
+			case 0:
+				//item wird geändert
+				value = ApplicationGlobals.randomMiddleItem(isNull);
+				break;
+			case 1:
+				//neues zwischenelement
+				break;
+			case 2:
+				//zwischenitem wird gelöscht
+			}
 		}
 		
 		/**
 		 * Eigene Mutation, entscheidet auch zwischen innere und aeussere Mutation
 		 */
-		if(new Random().nextDouble() <= ApplicationGlobals.PM){
-			if(new Random().nextDouble() <= ApplicationGlobals.CHANGE_PM){
+		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
+			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
 				return this;
 			} else {
@@ -167,7 +178,7 @@ public class AngleItem implements OneCompItem {
 		AngleType temptype = null;
 		
 		do{
-			switch(new Random().nextInt(6)){
+			switch(ApplicationGlobals.randomer.nextInt(6)){
 			case 0:
 				temptype = AngleType.ARCCOS;
 				break;

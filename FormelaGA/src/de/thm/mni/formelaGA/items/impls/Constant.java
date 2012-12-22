@@ -31,8 +31,8 @@ public class Constant implements FormelPattern{
 	@Override
 	public FormelItem mutate() {
 		
-		if(new Random().nextDouble() <= ApplicationGlobals.PM)
-			switch(new Random().nextInt(7)){
+		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM)
+			switch(ApplicationGlobals.randomer.nextInt(7)){
 			case 0:value++;
 			break;
 			case 1:value--;
