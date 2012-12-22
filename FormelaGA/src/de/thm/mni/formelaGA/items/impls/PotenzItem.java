@@ -26,10 +26,12 @@ public class PotenzItem implements TwoCompItem {
 	public PotenzItem(FormelItem base, FormelItem exponent){
 		this.base = base;
 		this.exponent = exponent;
-		depth = (base.getDepth() > exponent.getDepth()?
-				base.getDepth():exponent.getDepth())+1;
+		setDepth();
 	}
 	
+	private void setDepth(){
+		depth = (base.getDepth() < exponent.getDepth()?base.getDepth():exponent.getDepth())+1;
+	}
 	
 	/* (non-Javadoc)
 	 * @see de.thm.mni.sgtz33.formeln.FormelItem#getWriteAble()
@@ -108,6 +110,7 @@ public class PotenzItem implements TwoCompItem {
 		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
 			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
+				setDepth();
 				return this;
 			} else {
 				//innere Mutation
@@ -127,7 +130,7 @@ public class PotenzItem implements TwoCompItem {
 				}
 			}
 		}
-		
+		setDepth();
 		return null;
 	}
 

@@ -31,7 +31,12 @@ public class Gen {
 	}
 	
 	public void mutate(){
-		FormelItem isNull = formelPattern.mutate();
+		FormelItem isNull = null;
+		
+		
+		if(formelPattern.getDepth() >1){
+			isNull = formelPattern.mutate();
+		}
 		
 		if(isNull != null){
 			switch(ApplicationGlobals.randomer.nextInt(2)){
@@ -40,12 +45,19 @@ public class Gen {
 				formelPattern = ApplicationGlobals.changeFormelItem(isNull);
 				break;
 			case 1:
-				//zwischenitem wird gelöscht
+				//zwischenitem wird gelöscht sofern es 
 				if(isNull instanceof FormelPattern)
 					formelPattern = (FormelPattern)ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
 			}
 		}
+		
+		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
+			formelPattern = ApplicationGlobals.newMiddleFormelPattern(formelPattern);
+		}
 	}
 	
+	public Gen clone(){
+		return new Gen((FormelPattern) formelPattern.getClone());
+	}
 	
 }

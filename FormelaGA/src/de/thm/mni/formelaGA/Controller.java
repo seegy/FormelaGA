@@ -42,7 +42,8 @@ public class Controller {
 		
 		double bestFit;
 		
-		for(long i = 1; i <= ApplicationGlobals.MAX_GENERATION; i++){
+		while (true){
+	//	for(long i = 1; i <= ApplicationGlobals.MAX_GENERATION; i++){
 			mutation();
 			
 			bestFit = test();
@@ -58,9 +59,11 @@ public class Controller {
 			bestFit = test();
 			if(bestFit>= 0.0) break;
 			System.out.println("Beste Fitness: "+bestFit);
+			//System.out.println("f(x) = "+genom.get(0).getFormelPattern().getWriteAble());
 		}
-		
 		System.out.println("f(x) = "+genom.get(0).getFormelPattern().getWriteAble());
+
+		
 	}
 	
 	private static double test() {
@@ -104,9 +107,18 @@ public class Controller {
 	}
 	
 	private static void replication(){
-		List<Gen> temp = new ArrayList<>();
-		//TODO
-		//genom = temp;
+		List<Gen> temp = new ArrayList<Gen>();
+		
+		int populationCount = ApplicationGlobals.GEN_COUNT / ApplicationGlobals.REPL_TOP_X;
+		
+		
+		for(int i = 0; i < ApplicationGlobals.REPL_TOP_X; i++){
+			for( int j = 0; j < populationCount; j++){
+				temp.add(genom.get(i).clone());
+			}
+		}
+		
+		genom = temp;
 	}
 	
 	private static void recombination(){

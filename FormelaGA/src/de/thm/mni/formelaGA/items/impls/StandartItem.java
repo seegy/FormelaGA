@@ -30,7 +30,7 @@ public class StandartItem implements TwoCompItem {
 		this.a = a;
 		this.b = b;
 		
-		depth = (a.getDepth() > b.getDepth()?a.getDepth():b.getDepth())+1;
+		setDepth();
 		
 		Random r =  ApplicationGlobals.randomer;
 		
@@ -55,6 +55,9 @@ public class StandartItem implements TwoCompItem {
 		
 	}
 	
+	private void setDepth(){
+		depth = (a.getDepth() < b.getDepth()?a.getDepth():b.getDepth())+1;
+	}
 	
 	/* (non-Javadoc)
 	 * @see de.thm.mni.sgtz33.formeln.FormelItem#getWriteAble()
@@ -176,6 +179,7 @@ public class StandartItem implements TwoCompItem {
 		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
 			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
+				setDepth();
 				return this;
 			} else {
 				//innere Mutation
@@ -195,7 +199,7 @@ public class StandartItem implements TwoCompItem {
 				}
 			}
 		}
-		
+		setDepth();
 		return null;
 	}
 

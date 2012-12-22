@@ -24,7 +24,7 @@ public class AngleItem implements OneCompItem {
 	
 	public AngleItem(FormelItem value){
 		this.value = value;
-		this.depth = value.getDepth()+1;
+		setDepth();
 		
 		Random r = ApplicationGlobals.randomer;
 		
@@ -52,6 +52,11 @@ public class AngleItem implements OneCompItem {
 		
 		
 		
+	}
+	
+	
+	private void setDepth(){
+		this.depth = value.getDepth()+1;
 	}
 	
 	
@@ -161,6 +166,7 @@ public class AngleItem implements OneCompItem {
 		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
 			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
+				setDepth();
 				return this;
 			} else {
 				//innere Mutation
@@ -175,7 +181,7 @@ public class AngleItem implements OneCompItem {
 				}
 			}
 		}
-		
+		setDepth();
 		return null;
 	}
 	

@@ -22,13 +22,17 @@ public class SqrtItem implements OneCompItem {
 	
 	public SqrtItem(FormelItem value){
 		this.value = value;
-		this.depth = value.getDepth()+1;
+		setDepth();
 		
 		
 		
 		
 	}
 	
+	
+	private void setDepth(){
+		this.depth = value.getDepth()+1;
+	}
 	
 	/* (non-Javadoc)
 	 * @see de.thm.mni.sgtz33.formeln.FormelItem#getWriteAble()
@@ -85,6 +89,7 @@ public class SqrtItem implements OneCompItem {
 		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
 			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
+				setDepth();
 				return this;
 			} else {
 				//innere Mutation
@@ -99,6 +104,7 @@ public class SqrtItem implements OneCompItem {
 				}
 			}
 		}
+		setDepth();
 		return null;
 	}
 

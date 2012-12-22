@@ -18,9 +18,12 @@ public class LogItem implements TwoCompItem {
 	public LogItem(FormelItem base, FormelItem x){
 		this.base = base;
 		this.x = x;
-		depth = (base.getDepth() > x.getDepth()?base.getDepth():x.getDepth())+1;
+		setDepth();
 	}
 	
+	private void setDepth(){
+		depth = (base.getDepth() < x.getDepth()?base.getDepth():x.getDepth())+1;
+	}
 	
 	@Override
 	public String getWriteAble() {	
@@ -91,6 +94,7 @@ public class LogItem implements TwoCompItem {
 		if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.PM){
 			if(ApplicationGlobals.randomer.nextDouble() <= ApplicationGlobals.CHANGE_PM){
 				//aeussere Mutation
+				setDepth();
 				return this;
 			} else {
 				//innere Mutation
@@ -110,7 +114,7 @@ public class LogItem implements TwoCompItem {
 				}
 			}
 		}
-		
+		setDepth();
 		return null;
 	}
 

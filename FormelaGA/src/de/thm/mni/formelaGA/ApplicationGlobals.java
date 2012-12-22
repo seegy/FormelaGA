@@ -21,15 +21,17 @@ public final class ApplicationGlobals {
 	 * GA
 	 */
 	
-	public static int GEN_COUNT = 200;
+	public static int GEN_COUNT = 300;
 	
-	public static double PM = 0.05;
+	public static double PM = 0.2;
 	
-	public static double CHANGE_PM = 0.1;
+	public static double CHANGE_PM = 0.2;
 	
-	public static double CONST_PM = 0.5;
+	public static double CONST_PM = 0.75;
 	
 	public static long MAX_GENERATION = 200;
+	
+	public static int REPL_TOP_X  = 30;
 	
 	/**
 	 * Formel
@@ -39,7 +41,7 @@ public final class ApplicationGlobals {
 	
 	public static double X_STEPS = 1.0;
 	
-	public static double[] SOLUTIONS= {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+	public static double[] SOLUTIONS= {1+10, 3+10, 5+10, 7+10, 9+10, 11+10, 13+10, 15+10, 17+10, 19+10};
 
 	
 	
