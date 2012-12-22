@@ -136,7 +136,15 @@ public class StandartItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			a = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				a = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				a = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -151,7 +159,15 @@ public class StandartItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			b = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				b = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				b = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -163,7 +179,20 @@ public class StandartItem implements TwoCompItem {
 				return this;
 			} else {
 				//innere Mutation
-				selfmutate();
+				switch(ApplicationGlobals.randomer.nextInt(2)){
+				
+				case 0: 
+					selfmutate();
+					break;
+				case 1:
+					
+					if(ApplicationGlobals.randomer.nextInt(2) == 0){
+						a = ApplicationGlobals.newMiddleFormelPattern(a);
+					} else {
+						b = ApplicationGlobals.newMiddleFormelPattern(b);
+					}
+						break;
+				}
 			}
 		}
 		

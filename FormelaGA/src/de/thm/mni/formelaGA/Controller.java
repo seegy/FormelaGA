@@ -33,7 +33,7 @@ public class Controller {
 		genom = new ArrayList<Gen>();
 		
 		for(int i = 0; i < ApplicationGlobals.GEN_COUNT; i++){
-			genom.add(new Gen(ApplicationGlobals.randomMiddleItem(ApplicationGlobals.X)));
+			genom.add(new Gen(ApplicationGlobals.changeFormelItem(ApplicationGlobals.X)));
 		}
 		
 	}
@@ -99,13 +99,13 @@ public class Controller {
 	private static void mutation(){
 		
 		for(int i = 0; i < ApplicationGlobals.GEN_COUNT; i++){
-			genom.get(i).getFormelPattern().mutate();
+			genom.get(i).mutate();
 		}
 	}
 	
 	private static void replication(){
 		List<Gen> temp = new ArrayList<>();
-		
+		//TODO
 		//genom = temp;
 	}
 	

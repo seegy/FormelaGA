@@ -68,7 +68,15 @@ public class PotenzItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			exponent = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				exponent = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				exponent = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -83,7 +91,15 @@ public class PotenzItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			base = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				base = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				base = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -95,7 +111,20 @@ public class PotenzItem implements TwoCompItem {
 				return this;
 			} else {
 				//innere Mutation
-				selfmutate();
+				switch(ApplicationGlobals.randomer.nextInt(2)){
+				
+				case 0: 
+					selfmutate();
+					break;
+				case 1:
+					
+					if(ApplicationGlobals.randomer.nextInt(2) == 0){
+						exponent = ApplicationGlobals.newMiddleFormelPattern(exponent);
+					} else {
+						base = ApplicationGlobals.newMiddleFormelPattern(base);
+					}
+						break;
+				}
 			}
 		}
 		

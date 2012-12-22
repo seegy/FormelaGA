@@ -51,7 +51,15 @@ public class LogItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			x = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				x = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				x = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -66,7 +74,15 @@ public class LogItem implements TwoCompItem {
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			base = ApplicationGlobals.randomMiddleItem(isNull);
+			switch(ApplicationGlobals.randomer.nextInt(2)){
+			case 0:
+				//item wird geändert
+				base = ApplicationGlobals.changeFormelItem(isNull);
+				break;
+			case 1:
+				//zwischenitem wird gelöscht
+				base = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+			}
 		}
 		
 		/**
@@ -78,7 +94,20 @@ public class LogItem implements TwoCompItem {
 				return this;
 			} else {
 				//innere Mutation
-				selfmutate();
+				switch(ApplicationGlobals.randomer.nextInt(2)){
+				
+				case 0: 
+					selfmutate();
+					break;
+				case 1:
+					
+					if(ApplicationGlobals.randomer.nextInt(2) == 0){
+						x = ApplicationGlobals.newMiddleFormelPattern(x);
+					} else {
+						base = ApplicationGlobals.newMiddleFormelPattern(base);
+					}
+						break;
+				}
 			}
 		}
 		

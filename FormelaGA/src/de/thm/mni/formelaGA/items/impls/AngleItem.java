@@ -139,21 +139,19 @@ public class AngleItem implements OneCompItem {
 		}
 		
 		/** 
-		 * Aessere Mutation des inneren Items
+		 * Aeussere Mutation des inneren Items
 		 * wenn die Mutation des Inhaltes nicht Null zurückgickt, 
 		 * wird es verändert durch durch die static-Methode
 		*/
 		if(isNull != null){
-			switch(ApplicationGlobals.randomer.nextInt(3)){
+			switch(ApplicationGlobals.randomer.nextInt(2)){
 			case 0:
 				//item wird geändert
-				value = ApplicationGlobals.randomMiddleItem(isNull);
+				value = ApplicationGlobals.changeFormelItem(isNull);
 				break;
 			case 1:
-				//neues zwischenelement
-				break;
-			case 2:
 				//zwischenitem wird gelöscht
+				value = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
 			}
 		}
 		
@@ -166,7 +164,15 @@ public class AngleItem implements OneCompItem {
 				return this;
 			} else {
 				//innere Mutation
-				selfmutate();
+				switch(ApplicationGlobals.randomer.nextInt(2)){
+				
+				case 0: 
+					selfmutate();
+					break;
+				case 1:
+					value = ApplicationGlobals.newMiddleFormelPattern(value);
+					break;
+				}
 			}
 		}
 		
