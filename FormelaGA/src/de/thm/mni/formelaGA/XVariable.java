@@ -29,6 +29,11 @@ public class XVariable implements FormelItem {
 	public FormelItem getClone() {
 		return this;
 	}
+
+	@Override
+	public FormelItem getXOPart(int n) {
+		return this;
+	}
 	
 
 }

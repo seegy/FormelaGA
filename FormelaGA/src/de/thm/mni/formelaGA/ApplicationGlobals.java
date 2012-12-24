@@ -33,6 +33,9 @@ public final class ApplicationGlobals {
 	
 	public static int REPL_TOP_X  = 30;
 	
+	public static boolean PROT_BEST = true;
+	
+	public static double PC = 0.4;
 	/**
 	 * Formel
 	 */
@@ -41,9 +44,9 @@ public final class ApplicationGlobals {
 	
 	public static double X_STEPS = 1.0;
 	
-	public static double[] SOLUTIONS= {1+10, 3+10, 5+10, 7+10, 9+10, 11+10, 13+10, 15+10, 17+10, 19+10};
+//	public static double[] SOLUTIONS = {1+10, 3+10, 5+10, 7+10, 9+10, 11+10, 13+10, 15+10, 17+10, 19+10};
 
-	
+	public static double[] SOLUTIONS = {1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97};
 	
 	
 	//########### Tools ###############
@@ -145,7 +148,6 @@ public final class ApplicationGlobals {
 				case 1:
 					return ((TwoCompItem)fp).getCompTwo();
 			}
-			
 			
 		}
 		return null;

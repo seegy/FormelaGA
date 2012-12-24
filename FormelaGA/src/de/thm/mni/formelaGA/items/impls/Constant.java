@@ -63,6 +63,15 @@ public class Constant implements FormelPattern{
 		return new Constant(value);
 	}
 
-	
+
+	@Override
+	public FormelItem getXOPart(int n) {
+		return this;
+	}
+
+	@Override
+	public void setXOValue(FormelItem xoPart) {
+		/* */
+	}
 
 }

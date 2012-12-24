@@ -171,6 +171,7 @@ public class StandartItem implements TwoCompItem {
 				//zwischenitem wird gelöscht
 				b = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
 			}
+			setDepth();
 		}
 		
 		/**
@@ -236,5 +237,28 @@ public class StandartItem implements TwoCompItem {
 		return result;
 	}
 
+	@Override
+	public FormelItem getXOPart(int n) {
+
+		if(n == 0){
+			return this;
+		} 
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			return a.getXOPart(n-1);
+		}
+		return b.getXOPart(n-1);
+	}
+	
+	@Override
+	public void setXOValue(FormelItem xoPart) {
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			a = xoPart;
+		} else {
+			b = xoPart;
+		}
+		setDepth();
+	}
 	
 }

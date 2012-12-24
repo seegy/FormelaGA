@@ -150,4 +150,29 @@ public class LogItem implements TwoCompItem {
 		return result;
 	}
 
+	@Override
+	public FormelItem getXOPart(int n) {
+
+		if(n == 0){
+			return this;
+		} 
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			return x.getXOPart(n-1);
+		}
+		return base.getXOPart(n-1);
+	}
+	
+	@Override
+	public void setXOValue(FormelItem xoPart) {
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			x = xoPart;
+		} else {
+			base = xoPart;
+		}
+
+		setDepth();
+	}
+
 }

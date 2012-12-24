@@ -102,6 +102,7 @@ public class PotenzItem implements TwoCompItem {
 				//zwischenitem wird gelöscht
 				base = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
 			}
+			setDepth();
 		}
 		
 		/**
@@ -164,6 +165,30 @@ public class PotenzItem implements TwoCompItem {
 		PotenzItem result = new PotenzItem(base.getClone(), exponent.getClone());
 		result.depth = depth;
 		return result;
+	}
+	
+	@Override
+	public FormelItem getXOPart(int n) {
+
+		if(n == 0){
+			return this;
+		} 
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			return exponent.getXOPart(n-1);
+		}
+		return base.getXOPart(n-1);
+	}
+	
+	@Override
+	public void setXOValue(FormelItem xoPart) {
+		
+		if(ApplicationGlobals.randomer.nextInt(2) == 1){
+			exponent = xoPart;
+		} else {
+			base = xoPart;
+		}
+		setDepth();
 	}
 
 }

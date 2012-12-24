@@ -234,4 +234,20 @@ public class AngleItem implements OneCompItem {
 		return result;
 	}
 
+
+	@Override
+	public FormelItem getXOPart(int n) {
+		if(n == 0){
+			return this;
+		} 
+		return value.getXOPart(n-1);
+	}
+
+
+	@Override
+	public void setXOValue(FormelItem xoPart) {
+		value = xoPart;
+		setDepth();
+	}
+
 }

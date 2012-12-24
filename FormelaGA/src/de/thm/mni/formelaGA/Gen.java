@@ -46,8 +46,14 @@ public class Gen {
 				break;
 			case 1:
 				//zwischenitem wird gelöscht sofern es 
-				if(isNull instanceof FormelPattern)
-					formelPattern = (FormelPattern)ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+				if(isNull instanceof FormelPattern){
+					Object test = ApplicationGlobals.removeFormelPattern((FormelPattern) isNull);
+					
+					if(test instanceof FormelPattern){
+						formelPattern = (FormelPattern)test;
+					}
+				}
+					
 			}
 		}
 		

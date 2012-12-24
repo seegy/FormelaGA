@@ -101,7 +101,13 @@ public class Controller {
 
 	private static void mutation(){
 		
-		for(int i = 0; i < ApplicationGlobals.GEN_COUNT; i++){
+		int i = 0;
+		
+		if(ApplicationGlobals.PROT_BEST){
+			i++;
+		}
+		
+		for(; i < ApplicationGlobals.GEN_COUNT; i++){
 			genom.get(i).mutate();
 		}
 	}
@@ -122,7 +128,44 @@ public class Controller {
 	}
 	
 	private static void recombination(){
-		// TODO
+		
+		
+		for(int i = 0; i < ApplicationGlobals.GEN_COUNT * ApplicationGlobals.PC ; i++){
+			
+			FormelItem xo1 = null;
+			FormelItem xo2 = null;
+			
+			do{
+				do{
+					xo1 = genom.get(ApplicationGlobals.randomer.nextInt(ApplicationGlobals.GEN_COUNT)).getFormelPattern();
+				}while(xo1.getDepth()<1);
+				
+				do{ // xo1 und xo2 sollten nicht gleich sein
+					xo2 = genom.get(ApplicationGlobals.randomer.nextInt(ApplicationGlobals.GEN_COUNT)).getFormelPattern();
+				}while(xo1 == xo2 || xo2.getDepth()<1);
+				
+				//bei protbest muss die init wiederholt werden, wenn best dabei ist
+			}while(ApplicationGlobals.PROT_BEST &&( xo1 == genom.get(0) || xo2 == genom.get(0)));
+			
+			//####################################################
+			
+			int depth1 = ApplicationGlobals.randomer.nextInt(xo1.getDepth());
+			
+			int depth2 = ApplicationGlobals.randomer.nextInt(xo2.getDepth());
+			
+			FormelItem part1 = xo1.getXOPart(depth1);
+			
+			FormelItem part2 = xo2.getXOPart(depth2);
+			
+			FormelItem temp = part1.getXOPart(1);
+			
+			
+			((FormelPattern)part1).setXOValue(part2.getXOPart(1));
+			((FormelPattern)part2).setXOValue(temp);
+			
+		}
+		
+		
 	}
 
 	private static void setFitnesses(){
