@@ -1,6 +1,5 @@
 package de.thm.mni.formelaGA.items.impls;
 
-import java.util.Random;
 
 import de.thm.mni.formelaGA.ApplicationGlobals;
 import de.thm.mni.formelaGA.FormelItem;

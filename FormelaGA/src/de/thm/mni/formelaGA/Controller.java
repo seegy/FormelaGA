@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.thm.mni.formelaGA.items.FormelPattern;
-import de.thm.mni.formelaGA.items.impls.AngleItem;
-import de.thm.mni.formelaGA.items.impls.Constant;
-import de.thm.mni.formelaGA.items.impls.LogItem;
-import de.thm.mni.formelaGA.items.impls.PotenzItem;
-import de.thm.mni.formelaGA.items.impls.StandartItem;
 
 
 public class Controller {
@@ -115,8 +110,7 @@ public class Controller {
 	private static void replication(){
 		List<Gen> temp = new ArrayList<Gen>();
 		
-		int populationCount = ApplicationGlobals.GEN_COUNT / ApplicationGlobals.REPL_TOP_X;
-		
+		int populationCount = ApplicationGlobals.GEN_COUNT / ApplicationGlobals.REPL_TOP_X;	
 		
 		for(int i = 0; i < ApplicationGlobals.REPL_TOP_X; i++){
 			for( int j = 0; j < populationCount; j++){
@@ -128,7 +122,6 @@ public class Controller {
 	}
 	
 	private static void recombination(){
-		
 		
 		for(int i = 0; i < ApplicationGlobals.GEN_COUNT * ApplicationGlobals.PC ; i++){
 			
@@ -150,19 +143,15 @@ public class Controller {
 			//####################################################
 			
 			int depth1 = ApplicationGlobals.randomer.nextInt(xo1.getDepth());
-			
 			int depth2 = ApplicationGlobals.randomer.nextInt(xo2.getDepth());
 			
 			FormelItem part1 = xo1.getXOPart(depth1);
-			
 			FormelItem part2 = xo2.getXOPart(depth2);
 			
 			FormelItem temp = part1.getXOPart(1);
 			
-			
 			((FormelPattern)part1).setXOValue(part2.getXOPart(1));
-			((FormelPattern)part2).setXOValue(temp);
-			
+			((FormelPattern)part2).setXOValue(temp);	
 		}
 		
 		
@@ -177,8 +166,7 @@ public class Controller {
 			for(int i = 0; j < ApplicationGlobals.SOLUTIONS.length; j+=ApplicationGlobals.X_STEPS, i++){
 	
 				ApplicationGlobals.X.setXValue(j);
-				double uc = gen.getFormelPattern().getUseCase();
-				double diff = Math.pow(uc - ApplicationGlobals.SOLUTIONS[i], 2);
+				
 				result -= (Math.pow(gen.getFormelPattern().getUseCase()-
 						ApplicationGlobals.SOLUTIONS[i], 2));
 				
