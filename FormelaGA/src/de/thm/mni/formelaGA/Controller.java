@@ -42,14 +42,14 @@ public class Controller {
 		
 		double bestFit;
 		
-		while (true){
-	//	for(long i = 1; i <= ApplicationGlobals.MAX_GENERATION; i++){
+		for(long i = 1; i <= ApplicationGlobals.MAX_GENERATION || ApplicationGlobals.inDevelopment; i++){
+			
 			mutation();
 			
 			bestFit = test();
 			if(bestFit == 0.0) break;
 			
-			recombination();
+			//recombination();
 			
 			bestFit = test();
 			if(bestFit>= 0.0) break;
