@@ -2,9 +2,11 @@ package de.thm.mni.formelaGA;
 
 import java.util.Random;
 
+import de.thm.mni.formelaGA.items.FormelItem;
 import de.thm.mni.formelaGA.items.FormelPattern;
 import de.thm.mni.formelaGA.items.OneCompItem;
 import de.thm.mni.formelaGA.items.TwoCompItem;
+import de.thm.mni.formelaGA.items.XVariable;
 import de.thm.mni.formelaGA.items.impls.AngleItem;
 import de.thm.mni.formelaGA.items.impls.Constant;
 import de.thm.mni.formelaGA.items.impls.LogItem;

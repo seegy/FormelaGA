@@ -1,4 +1,4 @@
-package de.thm.mni.formelaGA;
+package de.thm.mni.formelaGA.items;
 public interface FormelItem {
 
 	public String getWriteAble();

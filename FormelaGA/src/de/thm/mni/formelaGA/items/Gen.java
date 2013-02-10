@@ -1,6 +1,6 @@
-package de.thm.mni.formelaGA;
+package de.thm.mni.formelaGA.items;
 
-import de.thm.mni.formelaGA.items.FormelPattern;
+import de.thm.mni.formelaGA.ApplicationGlobals;
 
 public class Gen {
 

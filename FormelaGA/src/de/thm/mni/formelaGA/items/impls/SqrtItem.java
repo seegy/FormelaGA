@@ -4,7 +4,7 @@
 package de.thm.mni.formelaGA.items.impls;
 
 import de.thm.mni.formelaGA.ApplicationGlobals;
-import de.thm.mni.formelaGA.FormelItem;
+import de.thm.mni.formelaGA.items.FormelItem;
 import de.thm.mni.formelaGA.items.FormelPattern;
 import de.thm.mni.formelaGA.items.OneCompItem;
 

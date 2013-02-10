@@ -3,7 +3,10 @@ package de.thm.mni.formelaGA;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.thm.mni.formelaGA.items.FormelItem;
 import de.thm.mni.formelaGA.items.FormelPattern;
+import de.thm.mni.formelaGA.items.Gen;
+import de.thm.mni.formelaGA.items.XVariable;
 
 
 public class Controller {

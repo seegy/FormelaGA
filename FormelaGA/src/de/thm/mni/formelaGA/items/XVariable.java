@@ -1,4 +1,5 @@
-package de.thm.mni.formelaGA;
+package de.thm.mni.formelaGA.items;
+
 
 
 public class XVariable implements FormelItem {
