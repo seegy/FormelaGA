@@ -9,4 +9,5 @@ public interface FormelPattern extends FormelItem {
 
 	public void setXOValue(FormelItem xoPart);
 	
+	
 }

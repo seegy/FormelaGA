@@ -54,12 +54,12 @@ public class GeneticAlgorithm {
 			if(bestFit < currentFit){
 				bestFit = currentFit;
 				ioChannel.showGeneration(i);
-				ioChannel.showFitness(currentFit+"");
+				ioChannel.showFitness(genom.get(0).getNonDcFitness()+"");
 				ioChannel.showFormula(genom.get(0).getFormelPattern().getWriteAble());
 			}
 		}
 		ioChannel.log("FINAL:");
-		ioChannel.showFitness(currentFit+"");
+		ioChannel.showFitness(genom.get(0).getNonDcFitness()+"");
 		ioChannel.showFormula(genom.get(0).getFormelPattern().getWriteAble());
 	}
 	

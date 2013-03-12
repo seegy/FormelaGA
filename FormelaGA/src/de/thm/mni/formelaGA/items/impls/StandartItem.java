@@ -260,5 +260,10 @@ public class StandartItem implements TwoCompItem {
 		}
 		setDepth();
 	}
+
+	@Override
+	public int getItemCount() {
+		return 1 + a.getItemCount() + b.getItemCount();
+	}
 	
 }

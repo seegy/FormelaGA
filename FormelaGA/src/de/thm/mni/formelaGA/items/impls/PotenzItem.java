@@ -190,4 +190,9 @@ public class PotenzItem implements TwoCompItem {
 		setDepth();
 	}
 
+	@Override
+	public int getItemCount() {
+		return 1+base.getItemCount()+exponent.getItemCount();
+	}
+
 }

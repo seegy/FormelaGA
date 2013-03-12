@@ -28,21 +28,26 @@ public final class ApplicationGlobals {
 	 * GA
 	 */
 	
-	public static int GEN_COUNT = 300;
+	public static final int GEN_COUNT = 300;
 	
-	public static double PM = 0.2;
+	public static final double PM = 0.2;
 	
-	public static double CHANGE_PM = 0.2;
+	public static final double CHANGE_PM = 0.2;
 	
-	public static double CONST_PM = 0.75;
+	public static final double CONST_PM = 0.75;
 	
-	public static long MAX_GENERATION = 200;
+	public static final long MAX_GENERATION = 200;
 	
-	public static int REPL_TOP_X  = 30;
+	public static final int REPL_TOP_X  = 30;
 	
-	public static boolean PROT_BEST = true;
+	public static final boolean PROT_BEST = true;
 	
-	public static double PC = 0.4;
+	public static final double PC = 0.4;
+	
+	public static final boolean DOUBLE_COMPARE = true;
+	
+	public static final double DOUBLE_COMPARE_RELEVANCE = .01;
+	
 	/**
 	 * Formel
 	 */

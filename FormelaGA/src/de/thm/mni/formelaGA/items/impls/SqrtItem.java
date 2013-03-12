@@ -145,4 +145,10 @@ public class SqrtItem implements OneCompItem {
 		value = xoPart;
 		setDepth();
 	}
+
+
+	@Override
+	public int getItemCount() {
+		return 1+value.getItemCount();
+	}
 }

@@ -15,6 +15,14 @@ public class Gen {
 	}
 
 	public double getFitness() {
+		if(ApplicationGlobals.DOUBLE_COMPARE){
+			return fitness - formelPattern.getItemCount() * ApplicationGlobals.DOUBLE_COMPARE_RELEVANCE;
+		} else {
+		return fitness;
+		}
+	}
+	
+	public double getNonDcFitness(){
 		return fitness;
 	}
 

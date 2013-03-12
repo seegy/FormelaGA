@@ -250,4 +250,10 @@ public class AngleItem implements OneCompItem {
 		setDepth();
 	}
 
+
+	@Override
+	public int getItemCount() {
+		return 1+value.getItemCount();
+	}
+
 }

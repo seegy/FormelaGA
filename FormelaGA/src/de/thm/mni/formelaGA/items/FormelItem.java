@@ -10,4 +10,7 @@ public interface FormelItem {
 	public FormelItem getClone();
 	
 	public FormelItem getXOPart(int n);
+	
+	public int getItemCount();
+
 }

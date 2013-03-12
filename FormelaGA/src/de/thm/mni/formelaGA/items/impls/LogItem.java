@@ -174,4 +174,9 @@ public class LogItem implements TwoCompItem {
 		setDepth();
 	}
 
+	@Override
+	public int getItemCount() {
+		return 1 + base.getItemCount() + x.getItemCount();
+	}
+
 }

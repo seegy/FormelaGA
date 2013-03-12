@@ -35,6 +35,11 @@ public class XVariable implements FormelItem {
 	public FormelItem getXOPart(int n) {
 		return this;
 	}
-	
 
+	@Override
+	public int getItemCount() {
+		return 1;
+	}
+	
+	
 }

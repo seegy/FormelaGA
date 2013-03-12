@@ -73,4 +73,10 @@ public class Constant implements FormelPattern{
 		/* */
 	}
 
+
+	@Override
+	public int getItemCount() {
+		return 1;
+	}
+
 }
